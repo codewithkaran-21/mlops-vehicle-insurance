@@ -166,8 +166,8 @@ class DataTransformation:
 
             logging.info("Feature target concatenation done train-test df")
             save_object(self.data_transformation_config.transformed_object_file_path , preprocessor)
-            save_numpy_array_data(self.data_transformation_config.transformed_test_file_path , array=train_arr)
-            save_numpy_array_data(self.data_transformation_config.transformed_test_file_path , test_arr)
+            save_numpy_array_data(self.data_transformation_config.transformed_train_file_path , array=train_arr)
+            save_numpy_array_data(self.data_transformation_config.transformed_test_file_path , array=test_arr)
             logging.info("Saving transformation object and transformed files")
             logging.info("Data Transformation completed successfully")
 

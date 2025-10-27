@@ -9,6 +9,7 @@ from src.logger import logging
 from typing import Tuple
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
+from src.entity.estimator import MyModel
 from sklearn.metrics import accuracy_score , recall_score , precision_score , f1_score
 
 class ModelTrainer:
@@ -45,6 +46,9 @@ class ModelTrainer:
             f1 = f1_score(y_test , y_pred)
             precision = precision_score(y_test , y_pred)
             recall = recall_score(y_test , y_pred)
+            print(accuracy)
+            logging.info(f"Accuracy score : {accuracy}")
+            
 
             metric_artifact = ClassificatonMetricArtifact(f1_score=f1 , precision_Score=precision , recall_score=recall)
             return model , metric_artifact
@@ -80,7 +84,17 @@ class ModelTrainer:
             
             logging.info("Saving new model as this model accuracy is better then previous one")
 
-            pass
+            my_model = MyModel(preprocessing_object=preprocessing_obj , trained_model_object=trained_model)
+            save_object(self.model_trainer_config.trained_model_file_path , my_model)
+            logging.info("Saved final model object that includes both preprocessing and the trained model")
+            model_trainer_artifact = ModelTrainerArtifact(
+                trained_model_file_path=self.model_trainer_config.trained_model_file_path,
+                metric_artifact=metric_artifact
+            )
+
+            logging.info(f"Model Training Artifact : {ModelTrainerArtifact}")
+
+            return model_trainer_artifact
 
         except Exception as e:
             raise MyEXception(e,sys)
