@@ -22,7 +22,7 @@
 13. Go to mongoDB Atlas >> Database >> browse collection >> see your data in key value format
 
 
-mongodb+srv://godthatback21:<db_password>@cluster0.2argdiu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
 
 
 -------------------------------------- logging, exception and notebooks --------------------------------------
@@ -167,4 +167,4 @@ mongodb+srv://godthatback21:<db_password>@cluster0.2argdiu.mongodb.net/?retryWri
 
 
 
-$env:MONGODB_URL = "mongodb+srv://new_user21:karan21@cluster0.2argdiu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
